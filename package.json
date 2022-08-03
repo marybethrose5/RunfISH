@@ -1,0 +1,53 @@
+{
+  "name": "lyra",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "packages/**"
+  ],
+  "scripts": {
+    "test": "cd packages/lyra && pnpm test",
+    "changelog": "auto-changelog -p",
+    "commit": "pnpm lint-staged && cz",
+    "format": "prettier --write \"packages/**/*.{ts,js}\"",
+    "lint": "pnpm run format && eslint . --ext .js,.ts",
+    "prepare": "husky install",
+    "benchmark": "pnpm build:lyra && node ./packages/benchmarks/index.js",
+    "build:lyra": "cd packages/lyra && pnpm build"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Michele Riva",
+    "email": "ciao@micheleriva.it",
+    "url": "https://github.com/MicheleRiva"
+  },
+  "license": "ISC",
+  "lint-staged": {
+    "*": "pnpm lint"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "auto-changelog": "^2.4.0",
+    "commitizen": "^4.2.5",
+    "eslint": "^8.20.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "typescript"
+      ]
+    }
+  }
+}
