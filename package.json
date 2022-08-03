@@ -6,8 +6,6 @@
   "workspaces": [
     "packages/**"
   ],
-  "scripts": {
-    "test": "cd packages/lyra && pnpm test",
     "changelog": "auto-changelog -p",
     "commit": "pnpm lint-staged && cz",
     "format": "prettier --write \"packages/**/*.{ts,js}\"",
